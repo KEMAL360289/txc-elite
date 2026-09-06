@@ -157,31 +157,525 @@
         <div class="product-image">T-SHIRT</div>
         <h3>TXC Elite T-Shirt</h3>
         <p class="price">₺899</p>
-        <a href="#" class="button">İNCELE</a>
+        <button class="button" onclick="sepeteEkle('TXC Elite T-Shirt', 899)">🛒 SEPETE EKLE</button>
       </div>
 
       <div class="card">
         <div class="product-image">HOODIE</div>
         <h3>TXC Elite Hoodie</h3>
         <p class="price">₺1.499</p>
-        <a href="#" class="button">İNCELE</a>
+        <button class="button" onclick="sepeteEkle('TXC Elite Hoodie', 1499)">🛒 SEPETE EKLE</button>
       </div>
 
       <div class="card">
         <div class="product-image">PANT</div>
         <h3>TXC Elite Pantolon</h3>
         <p class="price">₺1.299</p>
-        <a href="#" class="button">İNCELE</a>
+        <button class="button" onclick="sepeteEkle('TXC Elite Pantolon', 1299)">🛒 SEPETE EKLE</button>
       </div>
 
       <div class="card">
         <div class="product-image">BAG</div>
         <h3>TXC Elite Çanta</h3>
         <p class="price">₺1.199</p>
-        <a href="#" class="button">İNCELE</a>
+       <button class="button" onclick="sepeteEkle('TXC Elite Çanta', 1199)">🛒 SEPETE EKLE</button> 
       </div>
 
-    </div>
+    </div><div id="sepet" style="position:fixed;right:15px;bottom:15px;z-index:9999;">
+  <button onclick="sepetiAc()" class="button">
+    🛒 SEPET (<span id="sepetAdet">0</span>)
+  </button>
+</div>
+
+<div id="sepetPanel" style="
+display:none;
+position:fixed;
+right:15px;
+bottom:80px;
+width:330px;
+max-width:90%;
+background:#111;
+colo<div id="sepet" style="position:fixed;right:15px;bottom:15px;z-index:9999;">
+  <button onclick="sepetiAc()" class="button">
+    🛒 SEPET (<span id="sepetAdet">0</span>)
+  </button>
+</div>
+
+<div id="sepetPanel" style="
+display:none;
+position:fixed;
+right:15px;
+bottom:80px;
+width:330px;
+max-width:90%;
+background:#111;
+color:white;
+border:1px solid #444;
+padding:20px;
+z-index:9998;
+box-shadow:0 0 25px #000;
+">
+  <h2>🛒 Sepetim</h2>
+
+  <div id="sepetUrunler" style="margin-top:15px;"></div>
+
+  <hr style="border-color:#333;margin:15px 0;">
+
+  <h3>Toplam: ₺<span id="sepetToplam">0</span></h3>
+
+  <br>
+
+  <button onclick="sepetiKapat()" class="button">KAPAT</button>
+
+  <button onclick="sepetiTemizle()" style="padding:15px;background:#333;color:white;border:0;margin-left:5px;">
+    TEMİZLE
+  </button>
+
+  <br><br>
+
+  <button onclick="whatsappSiparis()" class="button">
+    📱 SİPARİŞİ WHATSAPP'TAN VER
+  </button>
+</div>
+
+<script>
+let sepet = [];
+
+function sepeteEkle(urun, fiyat) {
+  let mevcut = sepet.find(x => x.urun === urun);
+
+  if (mevcut) {
+    mevcut.adet++;
+  } else {
+    sepet.push({
+      urun: urun,
+      fiyat: fiyat,
+      adet: 1
+    });
+  }
+
+  sepetGuncelle();
+  alert(urun + " sepete eklendi!");
+}
+
+function sepetGuncelle() {
+  let alan = document.getElementById("sepetUrunler");
+  let toplam = 0;
+  let adet = 0;
+
+  alan.innerHTML = "";
+
+  sepet.forEach((item, index) => {
+    toplam += item.fiyat * item.adet;
+    adet += item.adet;
+
+    alan.innerHTML += `
+      <div style="border-bottom:1px solid #333;padding:10px 0;">
+        <b>${item.urun}</b><br>
+        ₺${item.fiyat} × ${item.adet}
+
+        <br><br>
+
+        <button onclick="adetAzalt(${index})">−</button>
+        <button onclick="adetArtir(${index})">+</button>
+        <button onclick="urunSil(${index})">❌</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("sepetAdet").innerText = adet;
+  document.getElementById("sepetToplam").innerText = toplam;
+}
+
+function adetArtir(index) {
+  sepet[index].adet++;
+  sepetGuncelle();
+}
+
+function adetAzalt(index) {
+  sepet[index].adet--;
+
+  if (sepet[index].adet <= 0) {
+    sepet.splice(index, 1);
+  }
+
+  sepetGuncelle();
+}
+
+function urunSil(index) {
+  sepet.splice(index, 1);
+  sepetGuncelle();
+}
+
+function sepetiAc() {
+  document.getElementById("sepetPanel").style.display = "block";
+}
+
+function sepetiKapat() {
+  document.getElementById("sepetPanel").style.display = "none";
+}
+
+function sepetiTemizle() {
+  sepet = [];
+  sepetGuncelle();
+}
+
+function whatsappSiparis() {
+  if (sepet.length === 0) {
+    alert("Sepetiniz boş!");
+    return;
+  }
+
+  let mesaj = "Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A";
+
+  sepet.forEach(item => {
+    mesaj += item.urun + " x" + item.adet +
+      " - ₺" + (item.fiyat * item.adet) + "%0A";
+  });
+
+  let toplam = sepet.reduce(
+    (sum, item) => sum + item.fiyat * item.adet, 0
+  );
+
+  mesaj += "%0AToplam: ₺" + toplam;
+
+  window.open(
+    "https://wa.me/905380575298?text=" + mesaj,
+    "_blank"
+  );
+}
+
+sepetGuncelle();
+</script><div id="sepet" style="position:fixed;right:15px;bottom:15px;z-index:9999;">
+  <button onclick="sepetiAc()" class="button">
+    🛒 SEPET (<span id="sepetAdet">0</span>)
+  </button>
+</div>
+
+<div id="sepetPanel" style="
+display:none;
+position:fixed;
+right:15px;
+bottom:80px;
+width:330px;
+max-width:90%;
+background:#111;
+color:white;
+border:1px solid #444;
+padding:20px;
+z-index:9998;
+box-shadow:0 0 25px #000;
+">
+  <h2>🛒 Sepetim</h2>
+
+  <div id="sepetUrunler" style="margin-top:15px;"></div>
+
+  <hr style="border-color:#333;margin:15px 0;">
+
+  <h3>Toplam: ₺<span id="sepetToplam">0</span></h3>
+
+  <br>
+
+  <button onclick="sepetiKapat()" class="button">KAPAT</button>
+
+  <button onclick="sepetiTemizle()" style="padding:15px;background:#333;color:white;border:0;margin-left:5px;">
+    TEMİZLE
+  </button>
+
+  <br><br>
+
+  <button onclick="whatsappSiparis()" class="button">
+    📱 SİPARİŞİ WHATSAPP'TAN VER
+  </button>
+</div>
+
+<script>
+let sepet = [];
+
+function sepeteEkle(urun, fiyat) {
+  let mevcut = sepet.find(x => x.urun === urun);
+
+  if (mevcut) {
+    mevcut.adet++;
+  } else {
+    sepet.push({
+      urun: urun,
+      fiyat: fiyat,
+      adet: 1
+    });
+  }
+
+  sepetGuncelle();
+  alert(urun + " sepete eklendi!");
+}
+
+function sepetGuncelle() {
+  let alan = document.getElementById("sepetUrunler");
+  let toplam = 0;
+  let adet = 0;
+
+  alan.innerHTML = "";
+
+  sepet.forEach((item, index) => {
+    toplam += item.fiyat * item.adet;
+    adet += item.adet;
+
+    alan.innerHTML += `
+      <div style="border-bottom:1px solid #333;padding:10px 0;">
+        <b>${item.urun}</b><br>
+        ₺${item.fiyat} × ${item.adet}
+
+        <br><br>
+
+        <button onclick="adetAzalt(${index})">−</button>
+        <button onclick="adetArtir(${index})">+</button>
+        <button onclick="urunSil(${index})">❌</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("sepetAdet").innerText = adet;
+  document.getElementById("sepetToplam").innerText = toplam;
+}
+
+function adetArtir(index) {
+  sepet[index].adet++;
+  sepetGuncelle();
+}
+
+function adetAzalt(index) {
+  sepet[index].adet--;
+
+  if (sepet[index].adet <= 0) {
+    sepet.splice(index, 1);
+  }
+
+  sepetGuncelle();
+}
+
+function urunSil(index) {
+  sepet.splice(index, 1);
+  sepetGuncelle();
+}
+
+function sepetiAc() {
+  document.getElementById("sepetPanel").style.display = "block";
+}
+
+function sepetiKapat() {
+  document.getElementById("sepetPanel").style.display = "none";
+}
+
+function sepetiTemizle() {
+  sepet = [];
+  sepetGuncelle();
+}
+
+function whatsappSiparis() {
+  if (sepet.length === 0) {
+    alert("Sepetiniz boş!");
+    return;
+  }
+
+  let mesaj = "Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A";
+
+  sepet.forEach(item => {
+    mesaj += item.urun + " x" + item.adet +
+      " - ₺" + (item.fiyat * item.adet) + "%0A";
+  });
+
+  let toplam = sepet.reduce(
+    (sum, item) => sum + item.fiyat * item.adet, 0
+  );
+
+  mesaj += "%0AToplam: ₺" + toplam;
+
+  window.open(
+    "https://wa.me/905380575298?text=" + mesaj,
+    "_blank"
+  );
+}
+
+sepetGuncelle();
+</script><div id="sepet" style="position:fixed;right:15px;bottom:15px;z-index:9999;">
+  <button onclick="sepetiAc()" class="button">
+    🛒 SEPET (<span id="sepetAdet">0</span>)
+  </button>
+</div>
+
+<div id="sepetPanel" style="
+display:none;
+position:fixed;
+right:15px;
+bottom:80px;
+width:330px;
+max-width:90%;
+background:#111;
+color:white;
+border:1px solid #444;
+padding:20px;
+z-index:9998;
+box-shadow:0 0 25px #000;
+">
+  <h2>🛒 Sepetim</h2>
+
+  <div id="sepetUrunler" style="margin-top:15px;"></div>
+
+  <hr style="border-color:#333;margin:15px 0;">
+
+  <h3>Toplam: ₺<span id="sepetToplam">0</span></h3>
+
+  <br>
+
+  <button onclick="sepetiKapat()" class="button">KAPAT</button>
+
+  <button onclick="sepetiTemizle()" style="padding:15px;background:#333;color:white;border:0;margin-left:5px;">
+    TEMİZLE
+  </button>
+
+  <br><br>
+
+  <button onclick="whatsappSiparis()" class="button">
+    📱 SİPARİŞİ WHATSAPP'TAN VER
+  </button>
+</div>
+
+<script>
+let sepet = [];
+
+function sepeteEkle(urun, fiyat) {
+  let mevcut = sepet.find(x => x.urun === urun);
+
+  if (mevcut) {
+    mevcut.adet++;
+  } else {
+    sepet.push({
+      urun: urun,
+      fiyat: fiyat,
+      adet: 1
+    });
+  }
+
+  sepetGuncelle();
+  alert(urun + " sepete eklendi!");
+}
+
+function sepetGuncelle() {
+  let alan = document.getElementById("sepetUrunler");
+  let toplam = 0;
+  let adet = 0;
+
+  alan.innerHTML = "";
+
+  sepet.forEach((item, index) => {
+    toplam += item.fiyat * item.adet;
+    adet += item.adet;
+
+    alan.innerHTML += `
+      <div style="border-bottom:1px solid #333;padding:10px 0;">
+        <b>${item.urun}</b><br>
+        ₺${item.fiyat} × ${item.adet}
+
+        <br><br>
+
+        <button onclick="adetAzalt(${index})">−</button>
+        <button onclick="adetArtir(${index})">+</button>
+        <button onclick="urunSil(${index})">❌</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("sepetAdet").innerText = adet;
+  document.getElementById("sepetToplam").innerText = toplam;
+}
+
+function adetArtir(index) {
+  sepet[index].adet++;
+  sepetGuncelle();
+}
+
+function adetAzalt(index) {
+  sepet[index].adet--;
+
+  if (sepet[index].adet <= 0) {
+    sepet.splice(index, 1);
+  }
+
+  sepetGuncelle();
+}
+
+function urunSil(index) {
+  sepet.splice(index, 1);
+  sepetGuncelle();
+}
+
+function sepetiAc() {
+  document.getElementById("sepetPanel").style.display = "block";
+}
+
+function sepetiKapat() {
+  document.getElementById("sepetPanel").style.display = "none";
+}
+
+function sepetiTemizle() {
+  sepet = [];
+  sepetGuncelle();
+}
+
+function whatsappSiparis() {
+  if (sepet.length === 0) {
+    alert("Sepetiniz boş!");
+    return;
+  }
+
+  let mesaj = "Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A";
+
+  sepet.forEach(item => {
+    mesaj += item.urun + " x" + item.adet +
+      " - ₺" + (item.fiyat * item.adet) + "%0A";
+  });
+
+  let toplam = sepet.reduce(
+    (sum, item) => sum + item.fiyat * item.adet, 0
+  );
+
+  mesaj += "%0AToplam: ₺" + toplam;
+
+  window.open(
+    "https://wa.me/905380575298?text=" + mesaj,
+    "_blank"
+  );
+}
+
+sepetGuncelle();
+</script>r:white;
+border:1px solid #444;
+padding:20px;
+z-index:9998;
+box-shadow:0 0 25px #000;
+">
+  <h2>🛒 Sepetim</h2>
+
+  <div id="sepetUrunler" style="margin-top:15px;"></div>
+
+  <hr style="border-color:#333;margin:15px 0;">
+
+  <h3>Toplam: ₺<span id="sepetToplam">0</span></h3>
+
+  <br>
+
+  <button onclick="sepetiKapat()" class="button">KAPAT</button>
+
+  <button onclick="sepetiTemizle()" style="padding:15px;background:#333;color:white;border:0;margin-left:5px;">
+    TEMİZLE
+  </button>
+
+  <br><br>
+
+  <button onclick="whatsappSiparis()" class="button">
+    📱 SİPARİŞİ WHATSAPP'TAN VER
+  </button>
+
   </section>
 
   <footer id="iletisim">
