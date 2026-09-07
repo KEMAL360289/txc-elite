@@ -1,698 +1,1109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TXC ELITE | Giyim</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050505">
+<title>TXC ELITE — More Than A Brand</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+:root{
+--bg:#050505;
+--panel:#0b0b0b;
+--line:#242424;
+--muted:#999;
+--white:#f5f5f2;
+--accent:#d7c08a
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+background:var(--bg);
+color:var(--white);
+font-family:Arial,Helvetica,sans-serif;
+line-height:1.5
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
 
-    body {
-      background: #080808;
-      color: white;
-    }
+.top{
+height:34px;
+border-bottom:1px solid var(--line);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+letter-spacing:2.5px;
+color:#bdbdbd;
+text-transform:uppercase
+}
 
-    header {
-      padding: 25px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #222;
-    }
+header{
+position:sticky;
+top:0;
+z-index:50;
+background:rgba(5,5,5,.88);
+backdrop-filter:blur(16px);
+border-bottom:1px solid #181818;
+padding:18px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 3px;
-    }
+.logo{
+font-size:25px;
+letter-spacing:7px;
+font-weight:700
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 25px;
-      font-size: 15px;
-    }
+.logo span{
+display:block;
+font-size:8px;
+letter-spacing:6px;
+text-align:center;
+color:#aaa;
+margin-top:-2px
+}
 
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #111, #050505);
-    }
+nav{
+display:flex;
+gap:30px;
+font-size:11px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:#c9c9c9
+}
 
-    .hero h1 {
-      font-size: clamp(55px, 12vw, 130px);
-      letter-spacing: 10px;
-      margin-bottom: 20px;
-    }
+nav a:hover{color:white}
 
-    .hero p {
-      color: #aaa;
-      font-size: 18px;
-      margin-bottom: 35px;
-    }
+.header-icons{
+display:flex;
+gap:15px;
+font-size:18px
+}
 
-    .button {
-      display: inline-block;
-      padding: 15px 35px;
-      background: white;
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 3px;
-    }
+.hero{
+min-height:82vh;
+display:grid;
+place-items:center;
+text-align:center;
+padding:100px 20px;
+position:relative;
+overflow:hidden;
+background:radial-gradient(circle at 50% 35%,#292929 0,#111 25%,#050505 63%)
+}
 
-    .products {
-      padding: 70px 8%;
-      text-align: center;
-    }
+.hero:before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(transparent 60%,#050505),
+repeating-linear-gradient(
+90deg,
+transparent 0 80px,
+rgba(255,255,255,.018) 81px 82px
+)
+}
 
-    .products h2 {
-      font-size: 35px;
-      margin-bottom: 40px;
-    }
+.hero-content{
+position:relative;
+z-index:2
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
+.eyebrow{
+font-size:10px;
+letter-spacing:5px;
+color:#aaa;
+margin-bottom:22px
+}
 
-    .card {
-      background: #111;
-      padding: 30px 20px;
-      border: 1px solid #222;
-      transition: 0.3s;
-    }
+.hero h1{
+font-size:clamp(70px,16vw,190px);
+line-height:.8;
+letter-spacing:18px;
+font-weight:300
+}
 
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: #555;
-    }
+.hero h2{
+font-size:14px;
+letter-spacing:10px;
+margin:28px 0 14px
+}
 
-    .product-image {
-      height: 260px;
-      background: #1b1b1b;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 25px;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-    }
+.hero p{
+max-width:520px;
+margin:auto;
+color:#aaa;
+font-size:13px
+}
 
-    .card h3 {
-      margin-bottom: 10px;
-    }
+.cta{
+display:inline-flex;
+align-items:center;
+gap:18px;
+margin-top:35px;
+padding:15px 26px;
+border:1px solid #777;
+font-size:11px;
+letter-spacing:2px;
+transition:.3s
+}
 
-    .price {
-      color: #aaa;
-      margin-bottom: 20px;
-    }
+.cta:hover{
+background:white;
+color:black;
+border-color:white
+}
 
-    footer {
-      padding: 40px;
-      text-align: center;
-      border-top: 1px solid #222;
-      color: #777;
-    }
-  </style>
+section{padding:90px 5%}
+
+.section-head{
+display:flex;
+justify-content:space-between;
+align-items:end;
+gap:25px;
+margin-bottom:30px
+}
+
+.kicker{
+font-size:9px;
+letter-spacing:4px;
+color:#999;
+text-transform:uppercase
+}
+
+h2.title{
+font-size:clamp(34px,6vw,72px);
+font-weight:300;
+letter-spacing:3px
+}
+
+.section-note{
+max-width:320px;
+color:#8f8f8f;
+font-size:12px
+}
+
+.products{
+border-top:1px solid var(--line)
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px
+}
+
+.card{
+background:var(--panel);
+border:1px solid var(--line);
+overflow:hidden;
+transition:.35s
+}
+
+.card:hover{
+transform:translateY(-7px);
+border-color:#555
+}
+
+.photo{
+aspect-ratio:3/4;
+background:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden
+}
+
+.photo img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block
+}
+
+.placeholder{
+color:#555;
+letter-spacing:5px;
+font-size:11px
+}
+
+.info{padding:18px}
+
+.info small{
+color:#777;
+font-size:9px;
+letter-spacing:2px
+}
+
+.info h3{
+font-size:15px;
+margin:7px 0
+}
+
+.price{
+color:#ddd;
+font-size:14px;
+margin-bottom:15px
+}
+
+.add{
+width:100%;
+padding:13px;
+border:1px solid #555;
+background:transparent;
+color:white;
+cursor:pointer;
+font-size:10px;
+letter-spacing:2px
+}
+
+.add:hover{
+background:white;
+color:black
+}
+
+.story{
+background:#090909;
+border-top:1px solid var(--line);
+border-bottom:1px solid var(--line)
+}
+
+.story-box{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+min-height:420px
+}
+
+.story-visual{
+background:radial-gradient(circle at 50% 45%,#343434,#101010 45%,#070707);
+display:grid;
+place-items:center
+}
+
+.story-mark{
+font-size:clamp(55px,10vw,130px);
+font-weight:200;
+letter-spacing:15px
+}
+
+.story-copy{
+padding:60px;
+border-left:1px solid var(--line);
+display:flex;
+flex-direction:column;
+justify-content:center
+}
+
+.story-copy h2{
+font-size:38px;
+font-weight:300;
+letter-spacing:2px;
+margin:12px 0 20px
+}
+
+.story-copy p{
+color:#999;
+font-size:13px;
+max-width:500px
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+border-bottom:1px solid var(--line)
+}
+
+.stat{
+text-align:center;
+padding:32px 15px;
+border-right:1px solid var(--line)
+}
+
+.stat:last-child{border:0}
+
+.stat b{
+display:block;
+font-size:20px;
+font-weight:400
+}
+
+.stat span{
+display:block;
+color:#777;
+font-size:9px;
+letter-spacing:2px;
+margin-top:5px
+}
+
+.social{
+text-align:center;
+border-bottom:1px solid var(--line)
+}
+
+.social h2{
+font-size:30px;
+font-weight:300;
+letter-spacing:5px
+}
+
+.social p{
+color:#777;
+font-size:12px;
+margin:10px 0 25px
+}
+
+.social a{
+display:inline-block;
+border:1px solid #333;
+padding:12px 20px;
+margin:4px;
+font-size:10px;
+letter-spacing:2px
+}
+
+footer{
+padding:55px 5% 25px;
+background:#030303
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:1.3fr 1fr 1fr 1.4fr;
+gap:35px
+}
+
+footer h3{
+font-size:10px;
+letter-spacing:3px;
+margin-bottom:18px
+}
+
+footer p,footer a{
+color:#777;
+font-size:12px;
+display:block;
+margin:8px 0
+}
+
+.copyright{
+border-top:1px solid #1b1b1b;
+margin-top:40px;
+padding-top:20px;
+color:#555;
+font-size:9px;
+letter-spacing:2px;
+display:flex;
+justify-content:space-between
+}
+
+.cart{
+position:fixed;
+right:18px;
+bottom:18px;
+z-index:100
+}
+
+.cart-btn{
+border:1px solid #888;
+background:#050505;
+color:white;
+padding:14px 18px;
+cursor:pointer;
+box-shadow:0 10px 35px #000;
+font-size:11px;
+letter-spacing:1px
+}
+
+.panel{
+display:none;
+position:fixed;
+right:18px;
+bottom:72px;
+width:360px;
+max-width:calc(100vw - 36px);
+max-height:75vh;
+overflow:auto;
+z-index:99;
+background:#0a0a0a;
+border:1px solid #444;
+padding:22px;
+box-shadow:0 20px 60px #000
+}
+
+.panel.open{display:block}
+
+.panel h2{
+font-weight:300;
+letter-spacing:3px;
+margin-bottom:15px
+}
+
+.item{
+padding:13px 0;
+border-bottom:1px solid #222;
+font-size:12px
+}
+
+.item-controls{
+margin-top:9px;
+display:flex;
+gap:7px
+}
+
+.item-controls button{
+border:1px solid #444;
+background:#151515;
+color:white;
+padding:5px 9px;
+cursor:pointer
+}
+
+.total{
+display:flex;
+justify-content:space-between;
+padding:20px 0;
+font-size:15px
+}
+
+.panel-actions{
+display:grid;
+gap:8px
+}
+
+.panel-actions button{
+padding:13px;
+border:1px solid #555;
+background:white;
+color:black;
+cursor:pointer;
+font-size:10px;
+letter-spacing:2px
+}
+
+.panel-actions .dark{
+background:#151515;
+color:white
+}
+
+@media(max-width:850px){
+
+nav{display:none}
+
+.grid{
+grid-template-columns:repeat(2,1fr)
+}
+
+.story-box{
+grid-template-columns:1fr
+}
+
+.story-copy{
+border-left:0;
+border-top:1px solid var(--line);
+padding:40px 25px
+}
+
+.stats{
+grid-template-columns:repeat(2,1fr)
+}
+
+.stat:nth-child(2){
+border-right:0
+}
+
+.stat:nth-child(-n+2){
+border-bottom:1px solid var(--line)
+}
+
+.footer-grid{
+grid-template-columns:1fr 1fr
+}
+
+}
+
+@media(max-width:520px){
+
+section{
+padding:65px 18px
+}
+
+.top{
+font-size:8px;
+letter-spacing:1.5px
+}
+
+.logo{
+font-size:19px
+}
+
+.hero{
+min-height:75vh
+}
+
+.hero h1{
+letter-spacing:9px
+}
+
+.hero h2{
+letter-spacing:5px;
+font-size:11px
+}
+
+.grid{
+gap:8px
+}
+
+.info{
+padding:13px
+}
+
+.info h3{
+font-size:13px
+}
+
+.footer-grid{
+grid-template-columns:1fr
+}
+
+.copyright{
+display:block
+}
+
+.copyright span{
+display:block;
+margin-top:10px
+}
+
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">TXC ELITE</div>
-
-    <nav>
-      <a href="#">Ana Sayfa</a>
-      <a href="#urunler">Ürünler</a>
-      <a href="#iletisim">İletişim</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div>
-      <h1>TXC</h1>
-      <p>ELITE GİYİM • PREMIUM STYLE</p>
-      <a href="#urunler" class="button">ÜRÜNLERİ KEŞFET</a>
-    </div>
-  </section>
-
-  <section class="products" id="urunler">
-    <h2>TXC ELITE</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <div class="product-image">T-SHIRT</div>
-        <h3>TXC Elite T-Shirt</h3>
-        <p class="price">₺899</p>
-        <button class="button" onclick="sepeteEkle('TXC Elite T-Shirt', 899)">🛒 SEPETE EKLE</button>
-      </div>
-
-      <div class="card">
-        <div class="product-image">HOODIE</div>
-        <h3>TXC Elite Hoodie</h3>
-        <p class="price">₺1.499</p>
-        <button class="button" onclick="sepeteEkle('TXC Elite Hoodie', 1499)">🛒 SEPETE EKLE</button>
-      </div>
-
-      <div class="card">
-        <div class="product-image">PANT</div>
-        <h3>TXC Elite Pantolon</h3>
-        <p class="price">₺1.299</p>
-        <button class="button" onclick="sepeteEkle('TXC Elite Pantolon', 1299)">🛒 SEPETE EKLE</button>
-      </div>
-
-      <div class="card">
-        <div class="product-image">BAG</div>
-        <h3>TXC Elite Çanta</h3>
-        <p class="price">₺1.199</p>
-       <button class="button" onclick="sepeteEkle('TXC Elite Çanta', 1199)">🛒 SEPETE EKLE</button> 
-      </div>
-
-    </div><div id="sepet" style="position:fixed;right:15px;bottom:15px;z-index:9999;">
-  <button onclick="sepetiAc()" class="button">
-    🛒 SEPET (<span id="sepetAdet">0</span>)
-  </button>
+<div class="top">
+LÜKS, SADECE BİR TERCİH DEĞİL — BİR DURUŞ.
 </div>
 
-<div id="sepetPanel" style="
-display:none;
-position:fixed;
-right:15px;
-bottom:80px;
-width:330px;
-max-width:90%;
-background:#111;
-colo<div id="sepet" style="position:fixed;right:15px;bottom:15px;z-index:9999;">
-  <button onclick="sepetiAc()" class="button">
-    🛒 SEPET (<span id="sepetAdet">0</span>)
-  </button>
+<header>
+
+<a class="logo" href="#">
+TXC
+<span>ELITE</span>
+</a>
+
+<nav>
+<a href="#">Ana Sayfa</a>
+<a href="#urunler">Koleksiyon</a>
+<a href="#hikaye">Hikâye</a>
+<a href="#iletisim">İletişim</a>
+</nav>
+
+<div class="header-icons">
+⌕ ♡ 🛒
 </div>
 
-<div id="sepetPanel" style="
-display:none;
-position:fixed;
-right:15px;
-bottom:80px;
-width:330px;
-max-width:90%;
-background:#111;
-color:white;
-border:1px solid #444;
-padding:20px;
-z-index:9998;
-box-shadow:0 0 25px #000;
-">
-  <h2>🛒 Sepetim</h2>
+</header>
 
-  <div id="sepetUrunler" style="margin-top:15px;"></div>
+<section class="hero">
 
-  <hr style="border-color:#333;margin:15px 0;">
+<div class="hero-content">
 
-  <h3>Toplam: ₺<span id="sepetToplam">0</span></h3>
-
-  <br>
-
-  <button onclick="sepetiKapat()" class="button">KAPAT</button>
-
-  <button onclick="sepetiTemizle()" style="padding:15px;background:#333;color:white;border:0;margin-left:5px;">
-    TEMİZLE
-  </button>
-
-  <br><br>
-
-  <button onclick="whatsappSiparis()" class="button">
-    📱 SİPARİŞİ WHATSAPP'TAN VER
-  </button>
+<div class="eyebrow">
+THE FIRST EDITION • TXC ELITE
 </div>
 
-<script>
-let sepet = [];
+<h1>TXC</h1>
 
-function sepeteEkle(urun, fiyat) {
-  let mevcut = sepet.find(x => x.urun === urun);
+<h2>
+MORE THAN A BRAND
+</h2>
 
-  if (mevcut) {
-    mevcut.adet++;
-  } else {
-    sepet.push({
-      urun: urun,
-      fiyat: fiyat,
-      adet: 1
-    });
-  }
+<p>
+Sadece giyim değil. Kendi tarzını seçenler için tasarlanmış bir duruş.
+</p>
 
-  sepetGuncelle();
-  alert(urun + " sepete eklendi!");
-}
+<a class="cta" href="#urunler">
+KOLEKSİYONU KEŞFET <b>→</b>
+</a>
 
-function sepetGuncelle() {
-  let alan = document.getElementById("sepetUrunler");
-  let toplam = 0;
-  let adet = 0;
-
-  alan.innerHTML = "";
-
-  sepet.forEach((item, index) => {
-    toplam += item.fiyat * item.adet;
-    adet += item.adet;
-
-    alan.innerHTML += `
-      <div style="border-bottom:1px solid #333;padding:10px 0;">
-        <b>${item.urun}</b><br>
-        ₺${item.fiyat} × ${item.adet}
-
-        <br><br>
-
-        <button onclick="adetAzalt(${index})">−</button>
-        <button onclick="adetArtir(${index})">+</button>
-        <button onclick="urunSil(${index})">❌</button>
-      </div>
-    `;
-  });
-
-  document.getElementById("sepetAdet").innerText = adet;
-  document.getElementById("sepetToplam").innerText = toplam;
-}
-
-function adetArtir(index) {
-  sepet[index].adet++;
-  sepetGuncelle();
-}
-
-function adetAzalt(index) {
-  sepet[index].adet--;
-
-  if (sepet[index].adet <= 0) {
-    sepet.splice(index, 1);
-  }
-
-  sepetGuncelle();
-}
-
-function urunSil(index) {
-  sepet.splice(index, 1);
-  sepetGuncelle();
-}
-
-function sepetiAc() {
-  document.getElementById("sepetPanel").style.display = "block";
-}
-
-function sepetiKapat() {
-  document.getElementById("sepetPanel").style.display = "none";
-}
-
-function sepetiTemizle() {
-  sepet = [];
-  sepetGuncelle();
-}
-
-function whatsappSiparis() {
-  if (sepet.length === 0) {
-    alert("Sepetiniz boş!");
-    return;
-  }
-
-  let mesaj = "Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A";
-
-  sepet.forEach(item => {
-    mesaj += item.urun + " x" + item.adet +
-      " - ₺" + (item.fiyat * item.adet) + "%0A";
-  });
-
-  let toplam = sepet.reduce(
-    (sum, item) => sum + item.fiyat * item.adet, 0
-  );
-
-  mesaj += "%0AToplam: ₺" + toplam;
-
-  window.open(
-    "https://wa.me/905380575298?text=" + mesaj,
-    "_blank"
-  );
-}
-
-sepetGuncelle();
-</script><div id="sepet" style="position:fixed;right:15px;bottom:15px;z-index:9999;">
-  <button onclick="sepetiAc()" class="button">
-    🛒 SEPET (<span id="sepetAdet">0</span>)
-  </button>
 </div>
 
-<div id="sepetPanel" style="
-display:none;
-position:fixed;
-right:15px;
-bottom:80px;
-width:330px;
-max-width:90%;
-background:#111;
-color:white;
-border:1px solid #444;
-padding:20px;
-z-index:9998;
-box-shadow:0 0 25px #000;
-">
-  <h2>🛒 Sepetim</h2>
+</section>
 
-  <div id="sepetUrunler" style="margin-top:15px;"></div>
+<section class="products" id="urunler">
 
-  <hr style="border-color:#333;margin:15px 0;">
+<div class="section-head">
 
-  <h3>Toplam: ₺<span id="sepetToplam">0</span></h3>
+<div>
 
-  <br>
-
-  <button onclick="sepetiKapat()" class="button">KAPAT</button>
-
-  <button onclick="sepetiTemizle()" style="padding:15px;background:#333;color:white;border:0;margin-left:5px;">
-    TEMİZLE
-  </button>
-
-  <br><br>
-
-  <button onclick="whatsappSiparis()" class="button">
-    📱 SİPARİŞİ WHATSAPP'TAN VER
-  </button>
+<div class="kicker">
+01 / THE COLLECTION
 </div>
 
-<script>
-let sepet = [];
+<h2 class="title">
+FIRST EDITION
+</h2>
 
-function sepeteEkle(urun, fiyat) {
-  let mevcut = sepet.find(x => x.urun === urun);
-
-  if (mevcut) {
-    mevcut.adet++;
-  } else {
-    sepet.push({
-      urun: urun,
-      fiyat: fiyat,
-      adet: 1
-    });
-  }
-
-  sepetGuncelle();
-  alert(urun + " sepete eklendi!");
-}
-
-function sepetGuncelle() {
-  let alan = document.getElementById("sepetUrunler");
-  let toplam = 0;
-  let adet = 0;
-
-  alan.innerHTML = "";
-
-  sepet.forEach((item, index) => {
-    toplam += item.fiyat * item.adet;
-    adet += item.adet;
-
-    alan.innerHTML += `
-      <div style="border-bottom:1px solid #333;padding:10px 0;">
-        <b>${item.urun}</b><br>
-        ₺${item.fiyat} × ${item.adet}
-
-        <br><br>
-
-        <button onclick="adetAzalt(${index})">−</button>
-        <button onclick="adetArtir(${index})">+</button>
-        <button onclick="urunSil(${index})">❌</button>
-      </div>
-    `;
-  });
-
-  document.getElementById("sepetAdet").innerText = adet;
-  document.getElementById("sepetToplam").innerText = toplam;
-}
-
-function adetArtir(index) {
-  sepet[index].adet++;
-  sepetGuncelle();
-}
-
-function adetAzalt(index) {
-  sepet[index].adet--;
-
-  if (sepet[index].adet <= 0) {
-    sepet.splice(index, 1);
-  }
-
-  sepetGuncelle();
-}
-
-function urunSil(index) {
-  sepet.splice(index, 1);
-  sepetGuncelle();
-}
-
-function sepetiAc() {
-  document.getElementById("sepetPanel").style.display = "block";
-}
-
-function sepetiKapat() {
-  document.getElementById("sepetPanel").style.display = "none";
-}
-
-function sepetiTemizle() {
-  sepet = [];
-  sepetGuncelle();
-}
-
-function whatsappSiparis() {
-  if (sepet.length === 0) {
-    alert("Sepetiniz boş!");
-    return;
-  }
-
-  let mesaj = "Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A";
-
-  sepet.forEach(item => {
-    mesaj += item.urun + " x" + item.adet +
-      " - ₺" + (item.fiyat * item.adet) + "%0A";
-  });
-
-  let toplam = sepet.reduce(
-    (sum, item) => sum + item.fiyat * item.adet, 0
-  );
-
-  mesaj += "%0AToplam: ₺" + toplam;
-
-  window.open(
-    "https://wa.me/905380575298?text=" + mesaj,
-    "_blank"
-  );
-}
-
-sepetGuncelle();
-</script><div id="sepet" style="position:fixed;right:15px;bottom:15px;z-index:9999;">
-  <button onclick="sepetiAc()" class="button">
-    🛒 SEPET (<span id="sepetAdet">0</span>)
-  </button>
 </div>
 
-<div id="sepetPanel" style="
-display:none;
-position:fixed;
-right:15px;
-bottom:80px;
-width:330px;
-max-width:90%;
-background:#111;
-color:white;
-border:1px solid #444;
-padding:20px;
-z-index:9998;
-box-shadow:0 0 25px #000;
-">
-  <h2>🛒 Sepetim</h2>
+<div class="section-note">
+Ürün fotoğraflarına dokunulmaz. Fotoğraflar aynı kalır; premium arayüz onları daha güçlü sunar.
+</div>
 
-  <div id="sepetUrunler" style="margin-top:15px;"></div>
+</div>
 
-  <hr style="border-color:#333;margin:15px 0;">
+<div class="grid">
 
-  <h3>Toplam: ₺<span id="sepetToplam">0</span></h3>
+<article class="card">
 
-  <br>
+<div class="photo placeholder">
+T-SHIRT
+</div>
 
-  <button onclick="sepetiKapat()" class="button">KAPAT</button>
+<div class="info">
 
-  <button onclick="sepetiTemizle()" style="padding:15px;background:#333;color:white;border:0;margin-left:5px;">
-    TEMİZLE
-  </button>
+<small>TXC / 001</small>
 
-  <br><br>
+<h3>
+TXC Elite T-Shirt
+</h3>
 
-  <button onclick="whatsappSiparis()" class="button">
-    📱 SİPARİŞİ WHATSAPP'TAN VER
-  </button>
+<div class="price">
+₺899
+</div>
+
+<button class="add" onclick="add('TXC Elite T-Shirt',899)">
+SEPETE EKLE
+</button>
+
+</div>
+
+</article>
+
+<article class="card">
+
+<div class="photo placeholder">
+HOODIE
+</div>
+
+<div class="info">
+
+<small>TXC / 002</small>
+
+<h3>
+TXC Elite Hoodie
+</h3>
+
+<div class="price">
+₺1.499
+</div>
+
+<button class="add" onclick="add('TXC Elite Hoodie',1499)">
+SEPETE EKLE
+</button>
+
+</div>
+
+</article>
+
+<article class="card">
+
+<div class="photo placeholder">
+PANT
+</div>
+
+<div class="info">
+
+<small>TXC / 003</small>
+
+<h3>
+TXC Elite Pantolon
+</h3>
+
+<div class="price">
+₺1.299
+</div>
+
+<button class="add" onclick="add('TXC Elite Pantolon',1299)">
+SEPETE EKLE
+</button>
+
+</div>
+
+</article>
+
+<article class="card">
+
+<div class="photo placeholder">
+BAG
+</div>
+
+<div class="info">
+
+<small>TXC / 004</small>
+
+<h3>
+TXC Elite Çanta
+</h3>
+
+<div class="price">
+₺1.199
+</div>
+
+<button class="add" onclick="add('TXC Elite Çanta',1199)">
+SEPETE EKLE
+</button>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<section class="story" id="hikaye">
+
+<div class="story-box">
+
+<div class="story-visual">
+
+<div class="story-mark">
+TXC
+</div>
+
+</div>
+
+<div class="story-copy">
+
+<div class="kicker">
+02 / THE IDENTITY
+</div>
+
+<h2>
+CRAFTED FOR THOSE WHO STAND OUT.
+</h2>
+
+<p>
+TXC ELITE; sade, güçlü ve kendine güvenen bir stil için tasarlanıyor.
+Detaylarda kalite, görünümde karakter, her parçada farklılık.
+</p>
+
+<a class="cta" href="#iletisim">
+MARKA HİKÂYESİ →
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="stats">
+
+<div class="stat">
+<b>01</b>
+<span>ÖZGÜN TASARIM</span>
+</div>
+
+<div class="stat">
+<b>24/7</b>
+<span>DESTEK</span>
+</div>
+
+<div class="stat">
+<b>14 GÜN</b>
+<span>KOLAY İADE</span>
+</div>
+
+<div class="stat">
+<b>TR</b>
+<span>TÜRKİYE'YE GÖNDERİM</span>
+</div>
+
+</div>
+
+<section class="social" id="iletisim">
+
+<div class="kicker">
+03 / CONNECT
+</div>
+
+<h2>
+TXC ELITE WORLD
+</h2>
+
+<p>
+Yeni koleksiyonları ve özel paylaşımları takip et.
+</p>
+
+<a href="https://www.instagram.com/txc_elitee/" target="_blank">
+INSTAGRAM
+</a>
+
+<a href="https://wa.me/905380575298?text=Merhaba%20TXC%20ELITE%2C%20sipariş%20vermek%20istiyorum." target="_blank">
+WHATSAPP'TAN SİPARİŞ
+</a>
+
+</section>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<div class="logo">
+TXC
+<span>ELITE</span>
+</div>
+
+<p style="margin-top:18px">
+MORE THAN A BRAND.
+</p>
+
+</div>
+
+<div>
+
+<h3>KURUMSAL</h3>
+
+<a href="#hikaye">Hakkımızda</a>
+<a href="#iletisim">İletişim</a>
+<a href="#">Kargo & Teslimat</a>
+<a href="#">İade & Değişim</a>
+
+</div>
+
+<div>
+
+<h3>KATEGORİLER</h3>
+
+<a href="#urunler">T-Shirt</a>
+<a href="#urunler">Hoodie</a>
+<a href="#urunler">Pantolon</a>
+<a href="#urunler">Çanta</a>
+
+</div>
+
+<div>
+
+<h3>TXC ELITE</h3>
+
+<p>
+Seçimini yap. Tarzını oluştur. Farkını göster.
+</p>
+
+<a href="https://www.instagram.com/txc_elitee/" target="_blank">
+Instagram →
+</a>
+
+<a href="https://wa.me/905380575298" target="_blank">
+WhatsApp →
+</a>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+<span>
+© 2026 TXC ELITE. TÜM HAKLARI SAKLIDIR.
+</span>
+
+<span>
+BE DIFFERENT.
+</span>
+
+</div>
+
+</footer>
+
+<div class="cart">
+
+<button class="cart-btn" onclick="toggleCart()">
+🛒 SEPET (<span id="count">0</span>)
+</button>
+
+</div>
+
+<div class="panel" id="panel">
+
+<h2>
+SEPETİM
+</h2>
+
+<div id="items"></div>
+
+<div class="total">
+
+<span>TOPLAM</span>
+
+<b>
+₺<span id="total">0</span>
+</b>
+
+</div>
+
+<div class="panel-actions">
+
+<button onclick="whatsapp()">
+WHATSAPP'TAN SİPARİŞ VER
+</button>
+
+<button class="dark" onclick="clearCart()">
+SEPETİ TEMİZLE
+</button>
+
+</div>
+
 </div>
 
 <script>
-let sepet = [];
 
-function sepeteEkle(urun, fiyat) {
-  let mevcut = sepet.find(x => x.urun === urun);
+let cart=[];
 
-  if (mevcut) {
-    mevcut.adet++;
-  } else {
-    sepet.push({
-      urun: urun,
-      fiyat: fiyat,
-      adet: 1
-    });
-  }
+function add(name,price){
 
-  sepetGuncelle();
-  alert(urun + " sepete eklendi!");
+let x=cart.find(i=>i.name===name);
+
+x ? x.qty++ : cart.push({
+name,
+price,
+qty:1
+});
+
+render();
+
+document.getElementById('panel').classList.add('open');
+
 }
 
-function sepetGuncelle() {
-  let alan = document.getElementById("sepetUrunler");
-  let toplam = 0;
-  let adet = 0;
+function render(){
 
-  alan.innerHTML = "";
+let h='';
+let t=0;
+let c=0;
 
-  sepet.forEach((item, index) => {
-    toplam += item.fiyat * item.adet;
-    adet += item.adet;
+cart.forEach((x,i)=>{
 
-    alan.innerHTML += `
-      <div style="border-bottom:1px solid #333;padding:10px 0;">
-        <b>${item.urun}</b><br>
-        ₺${item.fiyat} × ${item.adet}
+t+=x.price*x.qty;
+c+=x.qty;
 
-        <br><br>
+h+=`
+<div class="item">
 
-        <button onclick="adetAzalt(${index})">−</button>
-        <button onclick="adetArtir(${index})">+</button>
-        <button onclick="urunSil(${index})">❌</button>
-      </div>
-    `;
-  });
+<b>${x.name}</b>
+<br>
 
-  document.getElementById("sepetAdet").innerText = adet;
-  document.getElementById("sepetToplam").innerText = toplam;
-}
+₺${x.price.toLocaleString('tr-TR')} × ${x.qty}
 
-function adetArtir(index) {
-  sepet[index].adet++;
-  sepetGuncelle();
-}
+<div class="item-controls">
 
-function adetAzalt(index) {
-  sepet[index].adet--;
+<button onclick="minus(${i})">−</button>
 
-  if (sepet[index].adet <= 0) {
-    sepet.splice(index, 1);
-  }
+<button onclick="plus(${i})">+</button>
 
-  sepetGuncelle();
-}
+<button onclick="removeItem(${i})">SİL</button>
 
-function urunSil(index) {
-  sepet.splice(index, 1);
-  sepetGuncelle();
-}
-
-function sepetiAc() {
-  document.getElementById("sepetPanel").style.display = "block";
-}
-
-function sepetiKapat() {
-  document.getElementById("sepetPanel").style.display = "none";
-}
-
-function sepetiTemizle() {
-  sepet = [];
-  sepetGuncelle();
-}
-
-function whatsappSiparis() {
-  if (sepet.length === 0) {
-    alert("Sepetiniz boş!");
-    return;
-  }
-
-  let mesaj = "Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A";
-
-  sepet.forEach(item => {
-    mesaj += item.urun + " x" + item.adet +
-      " - ₺" + (item.fiyat * item.adet) + "%0A";
-  });
-
-  let toplam = sepet.reduce(
-    (sum, item) => sum + item.fiyat * item.adet, 0
-  );
-
-  mesaj += "%0AToplam: ₺" + toplam;
-
-  window.open(
-    "https://wa.me/905380575298?text=" + mesaj,
-    "_blank"
-  );
-}
-
-sepetGuncelle();
-</script>r:white;
-border:1px solid #444;
-padding:20px;
-z-index:9998;
-box-shadow:0 0 25px #000;
-">
-  <h2>🛒 Sepetim</h2>
-
-  <div id="sepetUrunler" style="margin-top:15px;"></div>
-
-  <hr style="border-color:#333;margin:15px 0;">
-
-  <h3>Toplam: ₺<span id="sepetToplam">0</span></h3>
-
-  <br>
-
-  <button onclick="sepetiKapat()" class="button">KAPAT</button>
-
-  <button onclick="sepetiTemizle()" style="padding:15px;background:#333;color:white;border:0;margin-left:5px;">
-    TEMİZLE
-  </button>
-
-  <br><br>
-
-  <button onclick="whatsappSiparis()" class="button">
-    📱 SİPARİŞİ WHATSAPP'TAN VER
-  </button>
-
-  </section>
-
-  <footer id="iletisim">
-    © 2026 TXC ELITE — All Rights Reserved
-  </footer>
-<div style="text-align:center; padding:30px;">
-  <a href="https://wa.me/905380575298?text=Merhaba%20TXC%20ELITE%2C%20sipariş%20vermek%20istiyorum." 
-     target="_blank" class="button">
-     📱 WHATSAPP'TAN SİPARİŞ VER
-  </a>
-
-  <br><br>
-
-  <a href="https://www.instagram.com/txc_elitee/" 
-     target="_blank" class="button">
-     📸 INSTAGRAM
-  </a>
 </div>
+
+</div>
+`;
+
+});
+
+document.getElementById('items').innerHTML=
+h || '<p style="color:#777">Sepetiniz boş.</p>';
+
+document.getElementById('count').textContent=c;
+
+document.getElementById('total').textContent=
+t.toLocaleString('tr-TR');
+
+}
+
+function plus(i){
+
+cart[i].qty++;
+
+render();
+
+}
+
+function minus(i){
+
+cart[i].qty--;
+
+if(cart[i].qty<1)
+cart.splice(i,1);
+
+render();
+
+}
+
+function removeItem(i){
+
+cart.splice(i,1);
+
+render();
+
+}
+
+function clearCart(){
+
+cart=[];
+
+render();
+
+}
+
+function toggleCart(){
+
+document.getElementById('panel')
+.classList.toggle('open');
+
+}
+
+function whatsapp(){
+
+if(!cart.length){
+
+alert('Sepetiniz boş!');
+
+return;
+
+}
+
+let m=
+'Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A';
+
+cart.forEach(x=>{
+
+m+=encodeURIComponent(
+x.name+' x'+x.qty+' - ₺'+(x.price*x.qty)
+)+'%0A';
+
+});
+
+m+=
+'%0AToplam: ₺'+
+cart.reduce((s,x)=>s+x.price*x.qty,0);
+
+window.open(
+'https://wa.me/905380575298?text='+m,
+'_blank'
+);
+
+}
+
+render();
+
+</script>
+
 </body>
 </html>
