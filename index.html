@@ -1,1105 +1,1448 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050505">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TXC ELITE — More Than A Brand</title>
+<meta name="description" content="TXC ELITE — Premium streetwear. More Than A Brand.">
 
 <style>
-:root{
---bg:#050505;
---panel:#0b0b0b;
---line:#242424;
---muted:#999;
---white:#f5f5f2;
---accent:#d7c08a
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-background:var(--bg);
-color:var(--white);
-font-family:Arial,Helvetica,sans-serif;
-line-height:1.5
-}
-a{text-decoration:none;color:inherit}
-button{font:inherit}
-
-.top{
-height:34px;
-border-bottom:1px solid var(--line);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:10px;
-letter-spacing:2.5px;
-color:#bdbdbd;
-text-transform:uppercase
+  background:#070707;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.5;
 }
 
-header{
-position:sticky;
-top:0;
-z-index:50;
-background:rgba(5,5,5,.88);
-backdrop-filter:blur(16px);
-border-bottom:1px solid #181818;
-padding:18px 5%;
-display:flex;
-align-items:center;
-justify-content:space-between
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  font:inherit;
+}
+
+/* HEADER */
+.header{
+  position:absolute;
+  z-index:20;
+  top:0;
+  left:0;
+  width:100%;
+  padding:22px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.13);
 }
 
 .logo{
-font-size:25px;
-letter-spacing:7px;
-font-weight:700
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:4px;
 }
 
-.logo span{
-display:block;
-font-size:8px;
-letter-spacing:6px;
-text-align:center;
-color:#aaa;
-margin-top:-2px
+.nav{
+  display:flex;
+  gap:32px;
+  font-size:11px;
+  letter-spacing:1.5px;
 }
 
-nav{
-display:flex;
-gap:30px;
-font-size:11px;
-letter-spacing:2px;
-text-transform:uppercase;
-color:#c9c9c9
+.nav a{
+  opacity:.82;
+  transition:.2s;
 }
 
-nav a:hover{color:white}
-
-.header-icons{
-display:flex;
-gap:15px;
-font-size:18px
+.nav a:hover{
+  opacity:1;
 }
 
+.actions{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  font-size:18px;
+}
+
+.icon{
+  cursor:pointer;
+  opacity:.9;
+}
+
+/* HERO */
 .hero{
-min-height:82vh;
-display:grid;
-place-items:center;
-text-align:center;
-padding:100px 20px;
-position:relative;
-overflow:hidden;
-background:radial-gradient(circle at 50% 35%,#292929 0,#111 25%,#050505 63%)
+  min-height:780px;
+  height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at 75% 55%,
+      rgba(120,120,120,.18),
+      transparent 25%
+    ),
+    linear-gradient(
+      90deg,
+      #050505 0%,
+      rgba(5,5,5,.78) 42%,
+      rgba(5,5,5,.2) 100%
+    );
 }
 
-.hero:before{
-content:"";
-position:absolute;
-inset:0;
-background:
-linear-gradient(transparent 60%,#050505),
-repeating-linear-gradient(
-90deg,
-transparent 0 80px,
-rgba(255,255,255,.018) 81px 82px
-)
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      0deg,
+      #070707 0%,
+      transparent 24%,
+      rgba(0,0,0,.15) 100%
+    );
+  pointer-events:none;
+}
+
+/*
+  Daha sonra gerçek hero fotoğrafını
+  hero.jpg adıyla ekleyebiliriz.
+*/
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.48) 48%,
+      rgba(0,0,0,.2)
+    ),
+    url("hero.jpg") center/cover no-repeat;
+  filter:contrast(1.08);
 }
 
 .hero-content{
-position:relative;
-z-index:2
+  position:relative;
+  z-index:2;
+  width:90%;
+  max-width:1250px;
+  margin:auto;
+  padding-top:70px;
 }
 
 .eyebrow{
-font-size:10px;
-letter-spacing:5px;
-color:#aaa;
-margin-bottom:22px
+  font-size:11px;
+  letter-spacing:5px;
+  margin-bottom:18px;
+  opacity:.7;
 }
 
 .hero h1{
-font-size:clamp(70px,16vw,190px);
-line-height:.8;
-letter-spacing:18px;
-font-weight:300
+  font-size:clamp(68px,11vw,170px);
+  line-height:.82;
+  letter-spacing:-7px;
+  font-weight:950;
 }
 
 .hero h2{
-font-size:14px;
-letter-spacing:10px;
-margin:28px 0 14px
-}
-
-.hero p{
-max-width:520px;
-margin:auto;
-color:#aaa;
-font-size:13px
+  font-size:clamp(22px,3vw,42px);
+  letter-spacing:10px;
+  margin:18px 0 34px;
+  font-weight:300;
 }
 
 .cta{
-display:inline-flex;
-align-items:center;
-gap:18px;
-margin-top:35px;
-padding:15px 26px;
-border:1px solid #777;
-font-size:11px;
-letter-spacing:2px;
-transition:.3s
+  display:inline-flex;
+  padding:16px 30px;
+  border:1px solid #fff;
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:800;
+  transition:.25s;
 }
 
 .cta:hover{
-background:white;
-color:black;
-border-color:white
+  background:#fff;
+  color:#000;
 }
 
-section{padding:90px 5%}
+.scroll{
+  position:absolute;
+  z-index:3;
+  bottom:25px;
+  left:5%;
+  font-size:9px;
+  letter-spacing:3px;
+  opacity:.55;
+}
+
+/* SECTIONS */
+.section{
+  padding:105px 5%;
+}
 
 .section-head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:25px;
-margin-bottom:30px
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:40px;
 }
 
 .kicker{
-font-size:9px;
-letter-spacing:4px;
-color:#999;
-text-transform:uppercase
+  font-size:10px;
+  letter-spacing:4px;
+  opacity:.55;
+  margin-bottom:8px;
 }
 
-h2.title{
-font-size:clamp(34px,6vw,72px);
-font-weight:300;
-letter-spacing:3px
+.title{
+  font-size:clamp(34px,5vw,68px);
+  letter-spacing:-2px;
 }
 
-.section-note{
-max-width:320px;
-color:#8f8f8f;
-font-size:12px
+.link{
+  font-size:10px;
+  letter-spacing:2px;
+  border-bottom:1px solid #555;
+  padding-bottom:7px;
 }
 
+/* CATEGORIES */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:10px;
+}
+
+.cat{
+  height:190px;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      145deg,
+      #222,
+      #0d0d0d
+    );
+  display:flex;
+  align-items:end;
+  padding:20px;
+}
+
+.cat:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.8),
+      transparent 70%
+    );
+}
+
+.cat span{
+  position:relative;
+  z-index:1;
+  font-size:12px;
+  letter-spacing:2px;
+  font-weight:800;
+}
+
+/* PRODUCTS */
 .products{
-border-top:1px solid var(--line)
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px
+.product{
+  background:#101010;
+  border:1px solid #191919;
 }
 
-.card{
-background:var(--panel);
-border:1px solid var(--line);
-overflow:hidden;
-transition:.35s
+.product-img{
+  height:390px;
+  background:#181818;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
 }
 
-.card:hover{
-transform:translateY(-7px);
-border-color:#555
-}
-
-.photo{
-aspect-ratio:3/4;
-background:#111;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden
-}
-
-.photo img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
 .placeholder{
-color:#555;
-letter-spacing:5px;
-font-size:11px
+  font-size:12px;
+  letter-spacing:4px;
+  opacity:.35;
 }
 
-.info{padding:18px}
-
-.info small{
-color:#777;
-font-size:9px;
-letter-spacing:2px
+.product-info{
+  padding:19px;
 }
 
-.info h3{
-font-size:15px;
-margin:7px 0
+.product-name{
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:7px;
 }
 
-.price{
-color:#ddd;
-font-size:14px;
-margin-bottom:15px
+.product-price{
+  font-size:12px;
+  opacity:.65;
 }
 
 .add{
-width:100%;
-padding:13px;
-border:1px solid #555;
-background:transparent;
-color:white;
-cursor:pointer;
-font-size:10px;
-letter-spacing:2px
+  width:100%;
+  margin-top:17px;
+  padding:12px;
+  background:#fff;
+  color:#000;
+  border:0;
+  font-size:10px;
+  letter-spacing:2px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s;
 }
 
 .add:hover{
-background:white;
-color:black
+  background:#ddd;
 }
 
+/* STORY */
 .story{
-background:#090909;
-border-top:1px solid var(--line);
-border-bottom:1px solid var(--line)
-}
-
-.story-box{
-display:grid;
-grid-template-columns:1.2fr 1fr;
-min-height:420px
+  background:#0d0d0d;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:520px;
 }
 
 .story-visual{
-background:radial-gradient(circle at 50% 45%,#343434,#101010 45%,#070707);
-display:grid;
-place-items:center
-}
-
-.story-mark{
-font-size:clamp(55px,10vw,130px);
-font-weight:200;
-letter-spacing:15px
+  background:
+    linear-gradient(
+      135deg,
+      #292929,
+      #080808
+    );
+  min-height:520px;
 }
 
 .story-copy{
-padding:60px;
-border-left:1px solid var(--line);
-display:flex;
-flex-direction:column;
-justify-content:center
+  padding:80px 9%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.story-copy h2{
-font-size:38px;
-font-weight:300;
-letter-spacing:2px;
-margin:12px 0 20px
+.story-copy h3{
+  font-size:clamp(35px,4vw,62px);
+  line-height:.95;
+  letter-spacing:-2px;
+  margin-bottom:25px;
 }
 
 .story-copy p{
-color:#999;
-font-size:13px;
-max-width:500px
+  max-width:480px;
+  color:#aaa;
+  font-size:14px;
+  line-height:1.9;
 }
 
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-border-bottom:1px solid var(--line)
+/* TRUST */
+.trust{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #222;
+  border-bottom:1px solid #222;
 }
 
-.stat{
-text-align:center;
-padding:32px 15px;
-border-right:1px solid var(--line)
+.trust-item{
+  padding:35px 20px;
+  text-align:center;
+  border-right:1px solid #222;
 }
 
-.stat:last-child{border:0}
-
-.stat b{
-display:block;
-font-size:20px;
-font-weight:400
+.trust-item:last-child{
+  border-right:0;
 }
 
-.stat span{
-display:block;
-color:#777;
-font-size:9px;
-letter-spacing:2px;
-margin-top:5px
+.trust-item b{
+  display:block;
+  font-size:11px;
+  letter-spacing:1px;
+  margin-bottom:7px;
 }
 
-.social{
-text-align:center;
-border-bottom:1px solid var(--line)
+.trust-item span{
+  font-size:10px;
+  color:#777;
 }
 
-.social h2{
-font-size:30px;
-font-weight:300;
-letter-spacing:5px
+/* CONTACT */
+.contact{
+  text-align:center;
+  padding:100px 20px;
 }
 
-.social p{
-color:#777;
-font-size:12px;
-margin:10px 0 25px
+.contact h3{
+  font-size:clamp(38px,6vw,80px);
+  letter-spacing:-3px;
+  margin-bottom:20px;
 }
 
-.social a{
-display:inline-block;
-border:1px solid #333;
-padding:12px 20px;
-margin:4px;
-font-size:10px;
-letter-spacing:2px
+.contact p{
+  color:#888;
+  margin-bottom:30px;
 }
 
+.contact-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* FOOTER */
 footer{
-padding:55px 5% 25px;
-background:#030303
+  padding:65px 5% 25px;
+  border-top:1px solid #222;
+  background:#050505;
 }
 
 .footer-grid{
-display:grid;
-grid-template-columns:1.3fr 1fr 1fr 1.4fr;
-gap:35px
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;
+  margin-bottom:60px;
 }
 
-footer h3{
-font-size:10px;
-letter-spacing:3px;
-margin-bottom:18px
+.footer-logo{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:4px;
+  margin-bottom:12px;
 }
 
-footer p,footer a{
-color:#777;
-font-size:12px;
-display:block;
-margin:8px 0
+.footer p,
+.footer a{
+  color:#777;
+  font-size:11px;
+  line-height:2.1;
 }
 
-.copyright{
-border-top:1px solid #1b1b1b;
-margin-top:40px;
-padding-top:20px;
-color:#555;
-font-size:9px;
-letter-spacing:2px;
-display:flex;
-justify-content:space-between
+.footer h4{
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+.copy{
+  border-top:1px solid #1b1b1b;
+  padding-top:20px;
+  color:#555;
+  font-size:9px;
+  letter-spacing:1px;
+}
+
+/* CART */
+.cart-btn{
+  position:relative;
+}
+
+.badge{
+  position:absolute;
+  top:-9px;
+  right:-10px;
+  background:#fff;
+  color:#000;
+  border-radius:50%;
+  font-size:9px;
+  min-width:16px;
+  height:16px;
+  text-align:center;
+  line-height:16px;
 }
 
 .cart{
-position:fixed;
-right:18px;
-bottom:18px;
-z-index:100
+  position:fixed;
+  z-index:50;
+  right:-420px;
+  top:0;
+  width:min(400px,92vw);
+  height:100vh;
+  background:#0d0d0d;
+  border-left:1px solid #333;
+  padding:25px;
+  transition:.3s;
+  box-shadow:-20px 0 50px rgba(0,0,0,.5);
 }
 
-.cart-btn{
-border:1px solid #888;
-background:#050505;
-color:white;
-padding:14px 18px;
-cursor:pointer;
-box-shadow:0 10px 35px #000;
-font-size:11px;
-letter-spacing:1px
+.cart.open{
+  right:0;
 }
 
-.panel{
-display:none;
-position:fixed;
-right:18px;
-bottom:72px;
-width:360px;
-max-width:calc(100vw - 36px);
-max-height:75vh;
-overflow:auto;
-z-index:99;
-background:#0a0a0a;
-border:1px solid #444;
-padding:22px;
-box-shadow:0 20px 60px #000
+.cart-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #292929;
+  padding-bottom:20px;
+  margin-bottom:20px;
 }
 
-.panel.open{display:block}
-
-.panel h2{
-font-weight:300;
-letter-spacing:3px;
-margin-bottom:15px
+.cart h3{
+  font-size:14px;
+  letter-spacing:3px;
 }
 
-.item{
-padding:13px 0;
-border-bottom:1px solid #222;
-font-size:12px
+.close{
+  cursor:pointer;
+  font-size:24px;
 }
 
-.item-controls{
-margin-top:9px;
-display:flex;
-gap:7px
+.cart-items{
+  height:65vh;
+  overflow:auto;
 }
 
-.item-controls button{
-border:1px solid #444;
-background:#151515;
-color:white;
-padding:5px 9px;
-cursor:pointer
+.cart-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:15px 0;
+  border-bottom:1px solid #222;
+  font-size:12px;
+}
+
+.cart-row button{
+  background:none;
+  border:0;
+  color:#aaa;
+  cursor:pointer;
 }
 
 .total{
-display:flex;
-justify-content:space-between;
-padding:20px 0;
-font-size:15px
+  display:flex;
+  justify-content:space-between;
+  padding:20px 0;
+  font-weight:800;
 }
 
-.panel-actions{
-display:grid;
-gap:8px
+.whatsapp{
+  display:block;
+  text-align:center;
+  padding:15px;
+  background:#fff;
+  color:#000;
+  font-size:10px;
+  letter-spacing:2px;
+  font-weight:900;
 }
 
-.panel-actions button{
-padding:13px;
-border:1px solid #555;
-background:white;
-color:black;
-cursor:pointer;
-font-size:10px;
-letter-spacing:2px
+/* TABLET */
+@media(max-width:900px){
+
+  .nav{
+    display:none;
+  }
+
+  .categories{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product-img{
+    height:330px;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+  }
+
+  .story-visual{
+    min-height:300px;
+  }
+
+  .trust{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .trust-item:nth-child(2){
+    border-right:0;
+  }
+
+  .trust-item{
+    border-bottom:1px solid #222;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
-.panel-actions .dark{
-background:#151515;
-color:white
-}
+/* MOBILE */
+@media(max-width:560px){
 
-@media(max-width:850px){
+  .header{
+    padding:18px 20px;
+  }
 
-nav{display:none}
+  .logo{
+    font-size:18px;
+    letter-spacing:3px;
+  }
 
-.grid{
-grid-template-columns:repeat(2,1fr)
-}
+  .actions{
+    gap:12px;
+  }
 
-.story-box{
-grid-template-columns:1fr
-}
+  .hero{
+    min-height:700px;
+  }
 
-.story-copy{
-border-left:0;
-border-top:1px solid var(--line);
-padding:40px 25px
-}
+  .hero-content{
+    width:90%;
+    padding-top:70px;
+  }
 
-.stats{
-grid-template-columns:repeat(2,1fr)
-}
+  .hero h1{
+    letter-spacing:-4px;
+  }
 
-.stat:nth-child(2){
-border-right:0
-}
+  .hero h2{
+    letter-spacing:5px;
+    font-size:18px;
+  }
 
-.stat:nth-child(-n+2){
-border-bottom:1px solid var(--line)
-}
+  .section{
+    padding:75px 20px;
+  }
 
-.footer-grid{
-grid-template-columns:1fr 1fr
-}
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-}
+  .cat{
+    height:145px;
+  }
 
-@media(max-width:520px){
+  .products{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
 
-section{
-padding:65px 18px
-}
+  .product-img{
+    height:250px;
+  }
 
-.top{
-font-size:8px;
-letter-spacing:1.5px
-}
+  .product-info{
+    padding:12px;
+  }
 
-.logo{
-font-size:19px
-}
+  .product-name{
+    font-size:11px;
+  }
 
-.hero{
-min-height:75vh
-}
+  .add{
+    font-size:9px;
+    padding:10px;
+  }
 
-.hero h1{
-letter-spacing:9px
-}
+  .story-copy{
+    padding:60px 25px;
+  }
 
-.hero h2{
-letter-spacing:5px;
-font-size:11px
-}
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
 
-.grid{
-gap:8px
-}
+  .trust-item{
+    padding:25px 10px;
+  }
 
-.info{
-padding:13px
-}
-
-.info h3{
-font-size:13px
-}
-
-.footer-grid{
-grid-template-columns:1fr
-}
-
-.copyright{
-display:block
-}
-
-.copyright span{
-display:block;
-margin-top:10px
-}
-
+  .trust-item:nth-child(odd){
+    border-right:1px solid #222;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="top">
-LÜKS, SADECE BİR TERCİH DEĞİL — BİR DURUŞ.
-</div>
+<!-- HEADER -->
+<header class="header">
 
-<header>
+  <div class="logo">
+    TXC ELITE
+  </div>
 
-<a class="logo" href="#">
-TXC
-<span>ELITE</span>
-</a>
+  <nav class="nav">
+    <a href="#home">ANA SAYFA</a>
+    <a href="#products">ÜRÜNLER</a>
+    <a href="#collections">KOLEKSİYONLAR</a>
+    <a href="#story">HAKKIMIZDA</a>
+    <a href="#contact">İLETİŞİM</a>
+  </nav>
 
-<nav>
-<a href="#">Ana Sayfa</a>
-<a href="#urunler">Koleksiyon</a>
-<a href="#hikaye">Hikâye</a>
-<a href="#iletisim">İletişim</a>
-</nav>
+  <div class="actions">
 
-<div class="header-icons">
-⌕ ♡ 🛒
-</div>
+    <span class="icon">⌕</span>
+
+    <span class="icon">♡</span>
+
+    <span
+      class="icon cart-btn"
+      onclick="toggleCart()"
+    >
+      🛒
+      <i class="badge" id="badge">0</i>
+    </span>
+
+  </div>
 
 </header>
 
-<section class="hero">
 
-<div class="hero-content">
+<!-- HERO -->
+<section class="hero" id="home">
 
-<div class="eyebrow">
-THE FIRST EDITION • TXC ELITE
-</div>
+  <div class="hero-bg"></div>
 
-<h1>TXC</h1>
+  <div class="hero-content">
 
-<h2>
-MORE THAN A BRAND
-</h2>
+    <div class="eyebrow">
+      PREMIUM STREETWEAR • THE FIRST EDITION
+    </div>
 
-<p>
-Sadece giyim değil. Kendi tarzını seçenler için tasarlanmış bir duruş.
-</p>
+    <h1>
+      TXC
+    </h1>
 
-<a class="cta" href="#urunler">
-KOLEKSİYONU KEŞFET <b>→</b>
-</a>
+    <h2>
+      ELITE
+    </h2>
 
-</div>
+    <a
+      class="cta"
+      href="#products"
+    >
+      ALIŞVERİŞE BAŞLA
+    </a>
 
-</section>
+  </div>
 
-<section class="products" id="urunler">
-
-<div class="section-head">
-
-<div>
-
-<div class="kicker">
-01 / THE COLLECTION
-</div>
-
-<h2 class="title">
-FIRST EDITION
-</h2>
-
-</div>
-
-<div class="section-note">
-Ürün fotoğraflarına dokunulmaz. Fotoğraflar aynı kalır; premium arayüz onları daha güçlü sunar.
-</div>
-
-</div>
-
-<div class="grid">
-
-<article class="card">
-
-<div class="photo placeholder">
-T-SHIRT
-</div>
-
-<div class="info">
-
-<small>TXC / 001</small>
-
-<h3>
-TXC Elite T-Shirt
-</h3>
-
-<div class="price">
-₺899
-</div>
-
-<button class="add" onclick="add('TXC Elite T-Shirt',899)">
-SEPETE EKLE
-</button>
-
-</div>
-
-</article>
-
-<article class="card">
-
-<div class="photo placeholder">
-HOODIE
-</div>
-
-<div class="info">
-
-<small>TXC / 002</small>
-
-<h3>
-TXC Elite Hoodie
-</h3>
-
-<div class="price">
-₺1.499
-</div>
-
-<button class="add" onclick="add('TXC Elite Hoodie',1499)">
-SEPETE EKLE
-</button>
-
-</div>
-
-</article>
-
-<article class="card">
-
-<div class="photo placeholder">
-PANT
-</div>
-
-<div class="info">
-
-<small>TXC / 003</small>
-
-<h3>
-TXC Elite Pantolon
-</h3>
-
-<div class="price">
-₺1.299
-</div>
-
-<button class="add" onclick="add('TXC Elite Pantolon',1299)">
-SEPETE EKLE
-</button>
-
-</div>
-
-</article>
-
-<article class="card">
-
-<div class="photo placeholder">
-BAG
-</div>
-
-<div class="info">
-
-<small>TXC / 004</small>
-
-<h3>
-TXC Elite Çanta
-</h3>
-
-<div class="price">
-₺1.199
-</div>
-
-<button class="add" onclick="add('TXC Elite Çanta',1199)">
-SEPETE EKLE
-</button>
-
-</div>
-
-</article>
-
-</div>
+  <div class="scroll">
+    SCROLL TO DISCOVER ↓
+  </div>
 
 </section>
 
-<section class="story" id="hikaye">
 
-<div class="story-box">
+<!-- COLLECTIONS -->
+<section
+  class="section"
+  id="collections"
+>
 
-<div class="story-visual">
+  <div class="section-head">
 
-<div class="story-mark">
-TXC
-</div>
+    <div>
 
-</div>
+      <div class="kicker">
+        TXC ELITE
+      </div>
 
-<div class="story-copy">
+      <h2 class="title">
+        KOLEKSİYONLAR
+      </h2>
 
-<div class="kicker">
-02 / THE IDENTITY
-</div>
+    </div>
 
-<h2>
-CRAFTED FOR THOSE WHO STAND OUT.
-</h2>
+    <a
+      class="link"
+      href="#products"
+    >
+      TÜMÜNÜ GÖR →
+    </a>
 
-<p>
-TXC ELITE; sade, güçlü ve kendine güvenen bir stil için tasarlanıyor.
-Detaylarda kalite, görünümde karakter, her parçada farklılık.
-</p>
+  </div>
 
-<a class="cta" href="#iletisim">
-MARKA HİKÂYESİ →
-</a>
 
-</div>
+  <div class="categories">
 
-</div>
+    <a
+      class="cat"
+      href="#products"
+    >
+      <span>T-SHIRT</span>
+    </a>
 
-</section>
+    <a
+      class="cat"
+      href="#products"
+    >
+      <span>SWEATSHIRT</span>
+    </a>
 
-<div class="stats">
+    <a
+      class="cat"
+      href="#products"
+    >
+      <span>PANTOLON</span>
+    </a>
 
-<div class="stat">
-<b>01</b>
-<span>ÖZGÜN TASARIM</span>
-</div>
+    <a
+      class="cat"
+      href="#products"
+    >
+      <span>CEKET</span>
+    </a>
 
-<div class="stat">
-<b>24/7</b>
-<span>DESTEK</span>
-</div>
+    <a
+      class="cat"
+      href="#products"
+    >
+      <span>AKSESUAR</span>
+    </a>
 
-<div class="stat">
-<b>14 GÜN</b>
-<span>KOLAY İADE</span>
-</div>
+    <a
+      class="cat"
+      href="#products"
+    >
+      <span>ÇANTA</span>
+    </a>
 
-<div class="stat">
-<b>TR</b>
-<span>TÜRKİYE'YE GÖNDERİM</span>
-</div>
-
-</div>
-
-<section class="social" id="iletisim">
-
-<div class="kicker">
-03 / CONNECT
-</div>
-
-<h2>
-TXC ELITE WORLD
-</h2>
-
-<p>
-Yeni koleksiyonları ve özel paylaşımları takip et.
-</p>
-
-<a href="https://www.instagram.com/txc_elitee/" target="_blank">
-INSTAGRAM
-</a>
-
-<a href="https://wa.me/905380575298?text=Merhaba%20TXC%20ELITE%2C%20sipariş%20vermek%20istiyorum." target="_blank">
-WHATSAPP'TAN SİPARİŞ
-</a>
+  </div>
 
 </section>
 
+
+<!-- PRODUCTS -->
+<section
+  class="section"
+  id="products"
+>
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="kicker">
+        SELECTED PIECES
+      </div>
+
+      <h2 class="title">
+        ÖNE ÇIKANLAR
+      </h2>
+
+    </div>
+
+  </div>
+
+
+  <div class="products">
+
+    <!-- PRODUCT 1 -->
+    <article class="product">
+
+      <div class="product-img">
+
+        <span class="placeholder">
+          T-SHIRT FOTOĞRAFI
+        </span>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-name">
+          TXC Elite T-Shirt
+        </div>
+
+        <div class="product-price">
+          ₺899
+        </div>
+
+        <button
+          class="add"
+          onclick="add('TXC Elite T-Shirt',899)"
+        >
+          🛒 SEPETE EKLE
+        </button>
+
+      </div>
+
+    </article>
+
+
+    <!-- PRODUCT 2 -->
+    <article class="product">
+
+      <div class="product-img">
+
+        <span class="placeholder">
+          HOODIE FOTOĞRAFI
+        </span>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-name">
+          TXC Elite Hoodie
+        </div>
+
+        <div class="product-price">
+          ₺1.499
+        </div>
+
+        <button
+          class="add"
+          onclick="add('TXC Elite Hoodie',1499)"
+        >
+          🛒 SEPETE EKLE
+        </button>
+
+      </div>
+
+    </article>
+
+
+    <!-- PRODUCT 3 -->
+    <article class="product">
+
+      <div class="product-img">
+
+        <span class="placeholder">
+          PANTOLON FOTOĞRAFI
+        </span>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-name">
+          TXC Elite Pantolon
+        </div>
+
+        <div class="product-price">
+          ₺1.299
+        </div>
+
+        <button
+          class="add"
+          onclick="add('TXC Elite Pantolon',1299)"
+        >
+          🛒 SEPETE EKLE
+        </button>
+
+      </div>
+
+    </article>
+
+
+    <!-- PRODUCT 4 -->
+    <article class="product">
+
+      <div class="product-img">
+
+        <span class="placeholder">
+          ÇANTA FOTOĞRAFI
+        </span>
+
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-name">
+          TXC Elite Çanta
+        </div>
+
+        <div class="product-price">
+          ₺1.199
+        </div>
+
+        <button
+          class="add"
+          onclick="add('TXC Elite Çanta',1199)"
+        >
+          🛒 SEPETE EKLE
+        </button>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- STORY -->
+<section
+  class="story"
+  id="story"
+>
+
+  <div class="story-visual"></div>
+
+  <div class="story-copy">
+
+    <div class="kicker">
+      THE TXC ELITE MINDSET
+    </div>
+
+    <h3>
+      BİZ KİMİZ?
+    </h3>
+
+    <p>
+      TXC ELITE, sıradan görünmek istemeyenler için oluşturuldu.
+      Güçlü çizgiler, premium detaylar ve modern sokak stilini
+      tek bir kimlikte buluşturuyoruz.
+    </p>
+
+    <br>
+
+    <p>
+      <b>MORE THAN A BRAND.</b>
+      <br>
+      Bu sadece kıyafet değil. Bir duruş.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- TRUST -->
+<section class="trust">
+
+  <div class="trust-item">
+
+    <b>
+      ÜCRETSİZ KARGO
+    </b>
+
+    <span>
+      Belirli siparişlerde
+    </span>
+
+  </div>
+
+
+  <div class="trust-item">
+
+    <b>
+      GÜVENLİ ALIŞVERİŞ
+    </b>
+
+    <span>
+      Güvenli sipariş süreci
+    </span>
+
+  </div>
+
+
+  <div class="trust-item">
+
+    <b>
+      14 GÜN İADE
+    </b>
+
+    <span>
+      Kolay iade & değişim
+    </span>
+
+  </div>
+
+
+  <div class="trust-item">
+
+    <b>
+      7/24 DESTEK
+    </b>
+
+    <span>
+      WhatsApp üzerinden
+    </span>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section
+  class="contact"
+  id="contact"
+>
+
+  <div class="kicker">
+    CONNECT WITH TXC
+  </div>
+
+  <h3>
+    SEN DE ELITE OL.
+  </h3>
+
+  <p>
+    TXC ELITE ile kendi tarzını oluştur.
+  </p>
+
+  <div class="contact-buttons">
+
+    <a
+      class="cta"
+      target="_blank"
+      href="https://www.instagram.com/txc_elitee/"
+    >
+      INSTAGRAM
+    </a>
+
+    <a
+      class="cta"
+      target="_blank"
+      href="https://wa.me/905380575298?text=Merhaba%20TXC%20ELITE%2C%20sipariş%20vermek%20istiyorum."
+    >
+      WHATSAPP'TAN SİPARİŞ
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
 <footer>
 
-<div class="footer-grid">
+  <div class="footer-grid">
 
-<div>
+    <div class="footer">
 
-<div class="logo">
-TXC
-<span>ELITE</span>
-</div>
+      <div class="footer-logo">
+        TXC ELITE
+      </div>
 
-<p style="margin-top:18px">
-MORE THAN A BRAND.
-</p>
+      <p>
+        MORE THAN A BRAND.
+        <br>
+        PREMIUM STREETWEAR.
+      </p>
 
-</div>
+    </div>
 
-<div>
 
-<h3>KURUMSAL</h3>
+    <div class="footer">
 
-<a href="#hikaye">Hakkımızda</a>
-<a href="#iletisim">İletişim</a>
-<a href="#">Kargo & Teslimat</a>
-<a href="#">İade & Değişim</a>
+      <h4>
+        MAĞAZA
+      </h4>
 
-</div>
+      <a href="#products">
+        T-Shirt
+      </a>
 
-<div>
+      <br>
 
-<h3>KATEGORİLER</h3>
+      <a href="#products">
+        Sweatshirt
+      </a>
 
-<a href="#urunler">T-Shirt</a>
-<a href="#urunler">Hoodie</a>
-<a href="#urunler">Pantolon</a>
-<a href="#urunler">Çanta</a>
+      <br>
 
-</div>
+      <a href="#products">
+        Pantolon
+      </a>
 
-<div>
+      <br>
 
-<h3>TXC ELITE</h3>
+      <a href="#products">
+        Çanta
+      </a>
 
-<p>
-Seçimini yap. Tarzını oluştur. Farkını göster.
-</p>
+    </div>
 
-<a href="https://www.instagram.com/txc_elitee/" target="_blank">
-Instagram →
-</a>
 
-<a href="https://wa.me/905380575298" target="_blank">
-WhatsApp →
-</a>
+    <div class="footer">
 
-</div>
+      <h4>
+        DESTEK
+      </h4>
 
-</div>
+      <p>
+        Kargo & Teslimat
+      </p>
 
-<div class="copyright">
+      <p>
+        İade & Değişim
+      </p>
 
-<span>
-© 2026 TXC ELITE. TÜM HAKLARI SAKLIDIR.
-</span>
+      <p>
+        WhatsApp Destek
+      </p>
 
-<span>
-BE DIFFERENT.
-</span>
+    </div>
 
-</div>
+
+    <div class="footer">
+
+      <h4>
+        SOSYAL
+      </h4>
+
+      <a
+        target="_blank"
+        href="https://www.instagram.com/txc_elitee/"
+      >
+        Instagram
+      </a>
+
+      <br>
+
+      <a
+        target="_blank"
+        href="https://wa.me/905380575298"
+      >
+        WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="copy">
+    © 2026 TXC ELITE — ALL RIGHTS RESERVED.
+  </div>
 
 </footer>
 
-<div class="cart">
 
-<button class="cart-btn" onclick="toggleCart()">
-🛒 SEPET (<span id="count">0</span>)
-</button>
+<!-- CART -->
+<aside
+  class="cart"
+  id="cart"
+>
 
-</div>
+  <div class="cart-top">
 
-<div class="panel" id="panel">
+    <h3>
+      SEPET
+    </h3>
 
-<h2>
-SEPETİM
-</h2>
+    <span
+      class="close"
+      onclick="toggleCart()"
+    >
+      ×
+    </span>
 
-<div id="items"></div>
+  </div>
 
-<div class="total">
 
-<span>TOPLAM</span>
+  <div
+    class="cart-items"
+    id="cartItems"
+  >
+  </div>
 
-<b>
-₺<span id="total">0</span>
-</b>
 
-</div>
+  <div class="total">
 
-<div class="panel-actions">
+    <span>
+      TOPLAM
+    </span>
 
-<button onclick="whatsapp()">
-WHATSAPP'TAN SİPARİŞ VER
-</button>
+    <span id="total">
+      ₺0
+    </span>
 
-<button class="dark" onclick="clearCart()">
-SEPETİ TEMİZLE
-</button>
+  </div>
 
-</div>
 
-</div>
+  <a
+    id="order"
+    class="whatsapp"
+    target="_blank"
+    href="#"
+  >
+    WHATSAPP'TAN SİPARİŞ VER
+  </a>
+
+</aside>
+
 
 <script>
 
-let cart=[];
+let cart = [];
+
 
 function add(name,price){
 
-let x=cart.find(i=>i.name===name);
+  cart.push({
+    name:name,
+    price:price
+  });
 
-x ? x.qty++ : cart.push({
-name,
-price,
-qty:1
-});
+  render();
 
-render();
-
-document.getElementById('panel').classList.add('open');
-
+  document
+    .getElementById('cart')
+    .classList
+    .add('open');
 }
 
-function render(){
-
-let h='';
-let t=0;
-let c=0;
-
-cart.forEach((x,i)=>{
-
-t+=x.price*x.qty;
-c+=x.qty;
-
-h+=`
-<div class="item">
-
-<b>${x.name}</b>
-<br>
-
-₺${x.price.toLocaleString('tr-TR')} × ${x.qty}
-
-<div class="item-controls">
-
-<button onclick="minus(${i})">−</button>
-
-<button onclick="plus(${i})">+</button>
-
-<button onclick="removeItem(${i})">SİL</button>
-
-</div>
-
-</div>
-`;
-
-});
-
-document.getElementById('items').innerHTML=
-h || '<p style="color:#777">Sepetiniz boş.</p>';
-
-document.getElementById('count').textContent=c;
-
-document.getElementById('total').textContent=
-t.toLocaleString('tr-TR');
-
-}
-
-function plus(i){
-
-cart[i].qty++;
-
-render();
-
-}
-
-function minus(i){
-
-cart[i].qty--;
-
-if(cart[i].qty<1)
-cart.splice(i,1);
-
-render();
-
-}
 
 function removeItem(i){
 
-cart.splice(i,1);
+  cart.splice(i,1);
 
-render();
-
-}
-
-function clearCart(){
-
-cart=[];
-
-render();
+  render();
 
 }
+
 
 function toggleCart(){
 
-document.getElementById('panel')
-.classList.toggle('open');
+  document
+    .getElementById('cart')
+    .classList
+    .toggle('open');
 
 }
 
-function whatsapp(){
 
-if(!cart.length){
+function render(){
 
-alert('Sepetiniz boş!');
+  const box =
+    document.getElementById('cartItems');
 
-return;
+
+  if(cart.length){
+
+    box.innerHTML =
+      cart.map((x,i)=>`
+
+        <div class="cart-row">
+
+          <span>
+
+            ${x.name}
+
+            <br>
+
+            ₺${x.price.toLocaleString('tr-TR')}
+
+          </span>
+
+          <button
+            onclick="removeItem(${i})"
+          >
+            SİL
+          </button>
+
+        </div>
+
+      `).join('');
+
+  }else{
+
+    box.innerHTML = `
+
+      <p
+        style="
+        color:#666;
+        font-size:12px;
+        padding:20px 0;
+        "
+      >
+        Sepetiniz şu an boş.
+      </p>
+
+    `;
+
+  }
+
+
+  const total =
+    cart.reduce(
+      (s,x)=>s+x.price,
+      0
+    );
+
+
+  document
+    .getElementById('total')
+    .textContent =
+      '₺' +
+      total.toLocaleString('tr-TR');
+
+
+  document
+    .getElementById('badge')
+    .textContent =
+      cart.length;
+
+
+  let text;
+
+
+  if(cart.length){
+
+    text =
+      'Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A' +
+
+      cart
+        .map(
+          x =>
+          `• ${x.name} — ₺${x.price}`
+        )
+        .join('%0A') +
+
+      `%0A%0AToplam: ₺${total}`;
+
+  }else{
+
+    text =
+      'Merhaba TXC ELITE, sipariş vermek istiyorum.';
+
+  }
+
+
+  document
+    .getElementById('order')
+    .href =
+      'https://wa.me/905380575298?text=' +
+      text;
 
 }
 
-let m=
-'Merhaba TXC ELITE, sipariş vermek istiyorum:%0A%0A';
-
-cart.forEach(x=>{
-
-m+=encodeURIComponent(
-x.name+' x'+x.qty+' - ₺'+(x.price*x.qty)
-)+'%0A';
-
-});
-
-m+=
-'%0AToplam: ₺'+
-cart.reduce((s,x)=>s+x.price*x.qty,0);
-
-window.open(
-'https://wa.me/905380575298?text='+m,
-'_blank'
-);
-
-}
 
 render();
 
